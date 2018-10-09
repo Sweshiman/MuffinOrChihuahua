@@ -24,13 +24,15 @@ public class ArduinoReader extends Thread {
         comPort.openPort();
         try {
             while (true) {
+                //READ DATA
                 while (comPort.bytesAvailable() == 0) {
-                    Thread.sleep(20);
+                    Thread.sleep(5);
                 }
 
                 byte[] readBuffer = new byte[comPort.bytesAvailable()];
                 int numRead = comPort.readBytes(readBuffer, readBuffer.length);
                 buffer += new String(readBuffer, "UTF-8");
+                //HANDLE DATA
                 handleBuffer(comPort);
             }
         } catch (Exception e) {
@@ -41,33 +43,31 @@ public class ArduinoReader extends Thread {
 
     private void handleBuffer(SerialPort comPort) {
         while (!buffer.isEmpty()) {
-            /*String id = buffer.substring(0, buffer.indexOf("\r\n"));
-            DataHandler.addHit(Integer.parseInt(id));
-            buffer = buffer.substring(buffer.indexOf("\r\n") + 2);*/
-            //buffer = "";
+            //SPLIT TO SEE IF THERE IS ANY FULL COMMANDS IN LINE
             if(buffer.contains("\r\n")){
                 String[] split = buffer.split("\r\n");
+                //SAVE CHECK IF LAST CHAR IS AN ENDCHAR
                 boolean lastCharEnd = (buffer.charAt(buffer.length()-1)=='\n');
+
+                //HANDLE ANY FULL LINES APART FROM LAST
                 for(int i = 0; i < split.length - 1; i++){
                     handleCommand(split[i], comPort);
                 }
+
+                //RESET BUFFER TO LAST ELEMENT IN ARRAY IF NOT NULL
                 buffer = split.length > 0 ? split[split.length-1] : "";
+                //HANDLE LAST PIECE IF THE LAST CHAR WAS NEWLINE
                 if(lastCharEnd){
                     handleCommand(buffer, comPort);
                     buffer="";
+                }else{
+                    break;//Break loop, buffer is not complete
                 }
             }
-            /*System.out.println(buffer);
-            if (Integer.parseInt(buffer) < 100) {
-                comPort.writeBytes("1".getBytes(), "1".getBytes().length);
-            } else {
-                comPort.writeBytes("0".getBytes(), "0".getBytes().length);
-            }
-            buffer = "";*/
         }
     }
 
     private void handleCommand(String command, SerialPort comPort){
-        comPort.writeBytes(command.getBytes(), command.getBytes().length);
+        //HANDLE THE COMMAND
     }
 }
