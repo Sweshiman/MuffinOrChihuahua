@@ -2,6 +2,7 @@
 
 #define numOfStrips 28
 #define numOfPots 3
+#define numOfRings 3
 
 String buffer = "";
 int pots[] = {0,0,0};
@@ -35,6 +36,11 @@ Adafruit_NeoPixel strips[] = {Adafruit_NeoPixel(6, 28),
                                 Adafruit_NeoPixel(9, 27),
                                 };
 
+Adafruit_NeoPixel rings[] = {Adafruit_NeoPixel(24, 30),
+                                Adafruit_NeoPixel(24, 31),
+                                Adafruit_NeoPixel(24, 32),
+                                };
+
 void setup() {
   Serial.begin(9600);
 
@@ -50,6 +56,12 @@ void setup() {
   for(int i = 0; i<numOfStrips; i++){
     strips[i].begin();
     strips[i].show();
+  }
+
+  //INIT RINGS
+  for(int i = 0; i<numOfRings; i++){
+    rings[i].begin();
+    rings[i].show();
   }
 }
 
@@ -72,8 +84,14 @@ void loop() {
   }*/
   //TEST STRIPS
   for(int i = 0; i<numOfStrips; i++){
-    pulseOne(i,0,0,255);
-    pulseOne(i,0,0,0);
+    pulseStrip(i,0,0,255);
+    pulseStrip(i,0,0,0);
+  }
+
+  //TEST RINGS
+  for(int i = 0; i<numOfRings; i++){
+    pulseRing(i,0,0,255);
+    pulseRing(i,0,0,0);
   }
 }
 
@@ -81,10 +99,18 @@ void handleCommand(String cmd){
   //Handle the command
 }
 
-void pulseOne(int stripId, int r, int g, int b){
+void pulseStrip(int stripId, int r, int g, int b){
   for(int i = 0; i<strips[stripId].numPixels(); i++){
     strips[stripId].setPixelColor(i,r,g,b);
     strips[stripId].show();
+    delay(25);
+  }
+}
+
+void pulseRing(int ringId, int r, int g, int b){
+  for(int i = 0; i<rings[ringId].numPixels(); i++){
+    strips[ringId].setPixelColor(i,r,g,b);
+    strips[ringId].show();
     delay(25);
   }
 }
