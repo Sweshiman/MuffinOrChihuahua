@@ -1,16 +1,53 @@
 #include <Adafruit_NeoPixel.h>
 
-#define NumOfStrips 1
+#define numOfStrips 28
+#define numOfPots 3
 
 String buffer = "";
-int pot0 = 0;
-Adafruit_NeoPixel strips[] = {Adafruit_NeoPixel(39, 2)};
+int pots[] = {0,0,0};
+Adafruit_NeoPixel strips[] = {Adafruit_NeoPixel(6, 28),
+                                Adafruit_NeoPixel(6, 29),
+                                Adafruit_NeoPixel(9, 2),
+                                Adafruit_NeoPixel(5, 3),
+                                Adafruit_NeoPixel(9, 4),
+                                Adafruit_NeoPixel(8, 5),
+                                Adafruit_NeoPixel(20, 6),
+                                Adafruit_NeoPixel(8, 7),
+                                Adafruit_NeoPixel(9, 8),
+                                Adafruit_NeoPixel(7, 9),
+                                Adafruit_NeoPixel(9, 10),
+                                Adafruit_NeoPixel(8, 11),
+                                Adafruit_NeoPixel(8, 12),
+                                Adafruit_NeoPixel(20, 13),
+                                Adafruit_NeoPixel(8, 14),
+                                Adafruit_NeoPixel(11, 15),
+                                Adafruit_NeoPixel(8, 16),
+                                Adafruit_NeoPixel(11, 17),
+                                Adafruit_NeoPixel(8, 18),
+                                Adafruit_NeoPixel(8, 19),
+                                Adafruit_NeoPixel(11, 20),
+                                Adafruit_NeoPixel(8, 21),
+                                Adafruit_NeoPixel(11, 22),
+                                Adafruit_NeoPixel(8, 23),
+                                Adafruit_NeoPixel(9, 24),
+                                Adafruit_NeoPixel(9, 25),
+                                Adafruit_NeoPixel(9, 26),
+                                Adafruit_NeoPixel(9, 27),
+                                };
 
 void setup() {
   Serial.begin(9600);
-  pinMode(A0, OUTPUT);//POT0
-  pot0 = analogRead(A0);
-  for(int i = 0; i<NumOfStrips; i++){
+
+  //INIT POTS
+  pinMode(A0, OUTPUT);
+  pinMode(A1, OUTPUT);
+  pinMode(A2, OUTPUT);
+  pots[0] = analogRead(A0);
+  pots[1] = analogRead(A1);
+  pots[2] = analogRead(A2);
+
+  //INIT STRIPS
+  for(int i = 0; i<numOfStrips; i++){
     strips[i].begin();
     strips[i].show();
   }
@@ -28,13 +65,16 @@ void loop() {
   }
 
   //SEND NEW VALUES IF THEY ARE NEW
-  int newPot0 = analogRead(A0);
+  /*int newPot0 = analogRead(A0);
   if(abs(pot0 - newPot0) < 20){
     Serial.print("P:0:");
     Serial.println(newPot0);
+  }*/
+  //TEST STRIPS
+  for(int i = 0; i<numOfStrips; i++){
+    pulseOne(i,0,0,255);
+    pulseOne(i,0,0,0);
   }
-  pulseOne(0,0,0,5);
-  pulseOne(0,0,0,0);
 }
 
 void handleCommand(String cmd){
