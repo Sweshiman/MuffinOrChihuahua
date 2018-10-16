@@ -1,9 +1,7 @@
 package com.ixdproject.madam.ui.views;
 
 import com.ixdproject.madam.backend.ImageManager;
-import com.ixdproject.madam.backend.Tag;
-import com.vaadin.flow.component.KeyPressEvent;
-import com.vaadin.flow.component.button.Button;
+import com.ixdproject.madam.ui.MainLayoutI;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -11,24 +9,14 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.ixdproject.madam.ui.MainLayout;
-import com.vaadin.flow.router.RouterLayout;
-import com.vaadin.flow.server.PageConfigurator;
-
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 @Route(value = "tuning_game", layout = MainLayout.class)
 @PageTitle("Tuning game")
-public class TuningGame extends VerticalLayout {
+public class TuningGame extends VerticalLayout implements MuffinView {
 
     private ImageManager imageManager = new ImageManager();
 
-    public TuningGame() {
-
-    }
-
-    public void showTuningGame(Div mainLayout) {
-        ImageManager imageManager = new ImageManager();
+    public void showTuningGame(MainLayoutI mainLayout) {
         Image currentImage = imageManager.getCurrentImage();
         currentImage.setClassName("current_image");
 
@@ -46,5 +34,10 @@ public class TuningGame extends VerticalLayout {
         imageOverview.addClassName("image_overview_container");
 
         return imageOverview;
+    }
+
+    @Override
+    public void handleInput(String command) {
+
     }
 }

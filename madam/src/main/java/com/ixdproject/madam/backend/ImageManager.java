@@ -5,6 +5,7 @@ import com.vaadin.flow.component.html.Image;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.ixdproject.madam.backend.Tag.CHIHUAHUA;
 import static com.ixdproject.madam.backend.Tag.MUFFIN;
@@ -15,16 +16,16 @@ public class ImageManager {
     private Img currentImg = Img.CHIHUAHUA1;
 
     public ImageManager() {
-        imgMap.put(Img.CHIHUAHUA1, false);
-        imgMap.put(Img.CHIHUAHUA2, false);
-        imgMap.put(Img.CHIHUAHUA3, false);
-        imgMap.put(Img.CHIHUAHUA4, false);
-        imgMap.put(Img.CHIHUAHUA5, false);
         imgMap.put(Img.MUFFIN1, false);
         imgMap.put(Img.MUFFIN2, false);
         imgMap.put(Img.MUFFIN3, false);
         imgMap.put(Img.MUFFIN4, false);
         imgMap.put(Img.MUFFIN5, false);
+        imgMap.put(Img.CHIHUAHUA1, false);
+        imgMap.put(Img.CHIHUAHUA2, false);
+        imgMap.put(Img.CHIHUAHUA3, false);
+        imgMap.put(Img.CHIHUAHUA4, false);
+        imgMap.put(Img.CHIHUAHUA5, false);
     }
 
     public enum Img {
@@ -52,8 +53,26 @@ public class ImageManager {
         return getImage(currentImg);
     }
 
+    public Img getCurrentImg() {
+        return currentImg;
+    }
+
+    public boolean isLastImage() {
+        return currentImg == Img.MUFFIN5;
+    }
+
+    public int getFinalScore() {
+        int score = 0;
+        for (Map.Entry<Img, Boolean> entry : imgMap.entrySet()) {
+            if (entry.getValue()) {
+                score += 1;
+            }
+        }
+        return score;
+    }
+
     public boolean isCorrectGuess(String tag) {
-        switch(tag) {
+        switch (tag) {
             case CHIHUAHUA:
                 return (currentImg == Img.CHIHUAHUA1 ||
                         currentImg == Img.CHIHUAHUA2 ||

@@ -1,38 +1,4 @@
-<link rel="import" href="../bower_components/vaadin-lumo-styles/color.html">
-<link rel="import" href="../bower_components/vaadin-lumo-styles/typography.html">
-
-<dom-module id="view-styles">
-    <template>
-        <style>
-            /* Stretch to fill the entire browser viewport while keeping the content constrained to
-            parent element max-width */
-
-            .view-toolbar {
-                display: flex;
-                background-color: var(--lumo-base-color);
-                box-shadow: 0 1px 0 0 var(--lumo-contrast-10pct);
-                margin: 0 calc(-50vw + 50%);
-                padding: 8px calc(50vw - 50% + 16px);
-                position: relative;
-                z-index: 1;
-                flex: none;
-            }
-
-            .view-toolbar__search-field {
-                flex: auto;
-                min-width: 0;
-                margin-right: 16px;
-            }
-            .view-container {
-                flex: auto;
-            }
-
-        </style>
-    </template>
-</dom-module>
-
-<custom-style>
-    <style include="view-styles">
+<style include="view-styles">
         html {
             height: auto;
             --main-layout-header-height: 64px;
@@ -43,6 +9,14 @@
             /* Avoid horizontal scrollbars, mainly on IE11 */
             overflow-x: hidden;
             background-color: var(--lumo-contrast-5pct);
+        }
+
+        .invisible {
+            opacity: 0;
+        }
+
+        .congrats_div {
+            margin: 25% auto;
         }
 
         .image_overview_container {
@@ -156,61 +130,4 @@
             box-sizing: border-box;
             pointer-events: none;
         }
-
-    </style>
-
-    <dom-module id="my-dialog-styles" theme-for="vaadin-dialog-overlay">
-        <template>
-            <style include="lumo-color lumo-typography">
-                h3 {
-                    margin-top: 0;
-                }
-
-                vaadin-form-layout {
-                    max-width: 30em;
-                }
-
-                .buttons {
-                    padding: var(--lumo-space-s) var(--lumo-space-l);
-                    margin: calc(var(--lumo-space-l) * -1);
-                    margin-top: var(--lumo-space-l);
-                    border-top: 1px solid var(--lumo-contrast-10pct);
-                }
-
-                .buttons > :last-child {
-                    margin-left: auto;
-                }
-
-                .buttons > :nth-last-child(2) {
-                    margin-right: var(--lumo-space-m);
-                }
-
-                .confirm-buttons {
-                    justify-content: space-between;
-                    padding: var(--lumo-space-xs) var(--lumo-space-m);
-                    margin-top: var(--lumo-space-m);
-                }
-
-                .has-padding {
-                    padding: 0 var(--lumo-space-l);
-                    margin: 0 calc(var(--lumo-space-l) * -1);
-                }
-
-                .confirm-text {
-                    max-width: 25em;
-                    line-height: var(--lumo-line-height-s);
-                }
-
-                .confirm-text > * {
-                    margin-bottom: 0.6em;
-                }
-
-                .confirm-text div:not(:first-child) {
-                    color: var(--lumo-secondary-text-color);
-                    font-size: var(--lumo-font-size-s);
-                }
-
-            </style>
-        </template>
-    </dom-module>
-</custom-style>
+</style>
