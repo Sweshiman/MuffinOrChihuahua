@@ -21,13 +21,38 @@
 
         .image_overview_container {
             width: 80%;
-            height: auto;
+            height: 4em;
             margin: 1em auto 0 auto;
+            display: inline-block;
+            flex-direction: row;
+        }
+
+        .image {
+            width: 100%;
+            height: 4em;
         }
 
         .overview_image {
+            display: inline-flex;
             width: 10%;
-            height: 4em;
+            height: 100%;
+        }
+
+        .image_unseen {
+            opacity: 0.05;
+            background-color: #2f3640;
+        }
+
+        .image_transparent {
+            opacity: 0.5;
+        }
+
+        .image_correct {
+            background-color: #27ae60;
+        }
+
+        .image_wrong {
+            background-color: #c0392b;
         }
 
         .current_image {
@@ -130,4 +155,6 @@
             box-sizing: border-box;
             pointer-events: none;
         }
+
+
 </style>

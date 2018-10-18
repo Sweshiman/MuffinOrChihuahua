@@ -25,12 +25,16 @@ public class MainLayout extends Div
     public MainLayout() {
         addClassName("main-layout");
 
-        GuessingGame guessingGame = new GuessingGame();
+        TuningGame tuningGame = new TuningGame();
+        arduinoReader = new ArduinoReader(tuningGame);
+        tuningGame.showTuningGame(this);
+
+        /*GuessingGame guessingGame = new GuessingGame();
         guessingGame.setVaadinSession(VaadinSession.getCurrent());
         arduinoReader = new ArduinoReader(guessingGame);
-        guessingGame.showGuessingGame(this);
+        guessingGame.showGuessingGame(this);*/
 
-        arduinoReader.start();
+        //arduinoReader.start();
     }
 
     public void switchToVideoView() {

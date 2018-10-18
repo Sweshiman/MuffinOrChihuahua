@@ -53,6 +53,10 @@ public class ImageManager {
         return getImage(currentImg);
     }
 
+    public Image getFirstImage() {
+        return getImage(Img.CHIHUAHUA1);
+    }
+
     public Img getCurrentImg() {
         return currentImg;
     }
