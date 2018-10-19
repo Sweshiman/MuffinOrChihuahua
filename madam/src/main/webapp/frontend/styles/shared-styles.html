@@ -11,8 +11,23 @@
             background-color: var(--lumo-contrast-5pct);
         }
 
-        .invisible {
+        .guessing-game__title {
+            text-align: center;
+            margin: 0.5em 0 0 0;
+            background: -webkit-linear-gradient(#0a00b2, #672d78);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.95;
+        }
+
+        .visible {
+            opacity: 1;
+            transition: 0s;
+        }
+
+        .fade {
             opacity: 0;
+            transition: 0.2s ease-in-out;
         }
 
         .congrats_div {
@@ -158,6 +173,4 @@
             box-sizing: border-box;
             pointer-events: none;
         }
-
-
 </style>
