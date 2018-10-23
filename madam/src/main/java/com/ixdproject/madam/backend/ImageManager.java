@@ -209,6 +209,31 @@ public class ImageManager {
         }
     }
 
+    public Img getImg(String imageSrc) {
+        switch (imageSrc) {
+            case "frontend/img/guessing_game/chi1.jpg":
+                return Img.CHIHUAHUA1;
+            case "frontend/img/guessing_game/chi2.jpg":
+                return Img.CHIHUAHUA2;
+            case "frontend/img/guessing_game/chi3.jpg":
+                return Img.CHIHUAHUA3;
+            case "frontend/img/guessing_game/chi4.jpg":
+                return Img.CHIHUAHUA4;
+            case "frontend/img/guessing_game/chi5.jpg":
+                return Img.CHIHUAHUA5;
+            case "frontend/img/guessing_game/muffin1.png":
+                return Img.MUFFIN1;
+            case "frontend/img/guessing_game/muffin2.png":
+                return Img.MUFFIN2;
+            case "frontend/img/guessing_game/muffin3.png":
+                return Img.MUFFIN3;
+            case "frontend/img/guessing_game/muffin4.png":
+                return Img.MUFFIN4;
+            default:
+                return Img.MUFFIN5;
+        }
+    }
+
     private String getCurrentGuessingGameImgTag() {
         if (currentGuessingGameImage.equals("frontend/img/guessing_game/chi1.jpg")
                 || currentGuessingGameImage.equals("frontend/img/guessing_game/chi2.jpg")

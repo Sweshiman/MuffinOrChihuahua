@@ -56,32 +56,32 @@ public class ArduinoReader extends Thread {
     private void handleBuffer(SerialPort comPort) {
         while (!buffer.isEmpty()) {
             //SPLIT TO SEE IF THERE IS ANY FULL COMMANDS IN LINE
-            if(buffer.contains("\r\n")){
+            if (buffer.contains("\r\n")) {
                 String[] split = buffer.split("\r\n");
                 //SAVE CHECK IF LAST CHAR IS AN ENDCHAR
-                boolean lastCharEnd = (buffer.charAt(buffer.length()-1)=='\n');
+                boolean lastCharEnd = (buffer.charAt(buffer.length() - 1) == '\n');
 
                 //HANDLE ANY FULL LINES APART FROM LAST
-                for(int i = 0; i < split.length - 1; i++){
+                for (int i = 0; i < split.length - 1; i++) {
                     handleCommand(split[i], comPort);
                 }
 
                 //RESET BUFFER TO LAST ELEMENT IN ARRAY IF NOT NULL
-                buffer = split.length > 0 ? split[split.length-1] : "";
+                buffer = split.length > 0 ? split[split.length - 1] : "";
                 //HANDLE LAST PIECE IF THE LAST CHAR WAS NEWLINE
-                if(lastCharEnd){
+                if (lastCharEnd) {
                     handleCommand(buffer, comPort);
-                    buffer="";
-                }else{
+                    buffer = "";
+                } else {
                     break;//Break loop, buffer is not complete
                 }
-            }else{
+            } else {
                 break;//Break loop, incomplete buffer
             }
         }
     }
 
-    private void handleCommand(String command, SerialPort comPort){
+    private void handleCommand(String command, SerialPort comPort) {
         view.handleInput(command);
     }
 }
