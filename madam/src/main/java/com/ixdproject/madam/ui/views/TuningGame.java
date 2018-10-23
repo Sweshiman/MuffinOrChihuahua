@@ -35,21 +35,15 @@ public class TuningGame extends VerticalLayout implements MuffinView {
     public void showTuningGame(MainLayoutI mainLayout) {
         currentImage.setClassName("current_image");
 
-        mainLayout.add(
-                initOverheadImages(),
-                currentImage
-
+        mainLayout.add(initOverheadImages(), currentImage
                 // ----- Remove after debug
                 , new Button("Previous", event -> {
                     showPreviousImage();
-                    updateOverviewImages();
                 }),
                 new Button("Next", event -> {
                     showNextImage();
-                    updateOverviewImages();
                 })
                 // ---- Remove after debug
-
         );
     }
 
@@ -71,6 +65,7 @@ public class TuningGame extends VerticalLayout implements MuffinView {
             imageOverview.add(imageDiv);
         });
         imageOverview.addClassName("image_overview_container");
+        updateOverviewImages();
 
         return imageOverview;
     }
@@ -79,8 +74,8 @@ public class TuningGame extends VerticalLayout implements MuffinView {
         images.forEach(image -> {
             if (!image.hasClassName("image_unseen")) {
                 Div div = overheadImageDivMap.get(image);
-
                 boolean isCorrect = tuningValues.isCorrect(imageValues.getImageValues(imageManager.getImg(image.getSrc())));
+
                 if (isCorrect) {
                     vaadinSession.access((Command) () -> {
                         div.removeClassName("image_wrong");
@@ -92,8 +87,6 @@ public class TuningGame extends VerticalLayout implements MuffinView {
                         div.addClassName("image_wrong");
                     });
                 }
-
-                //vaadinSession.access((Command) () -> image.addClassName("image_transparent"));
             }
         });
     }
@@ -105,12 +98,14 @@ public class TuningGame extends VerticalLayout implements MuffinView {
             index++;
         }
 
-        Image imageToShow = images.get(index);
+        updateImage();
+    }
 
-        vaadinSession.access((Command) () -> {
-            currentImage.setSrc(imageToShow.getSrc());
-            imageToShow.removeClassNames("image_wrong", "image_correct", "image_unseen");
-        });
+    private void updateImage() {
+        Image imageToShow = images.get(index);
+        currentImage.setSrc(imageToShow.getSrc());
+        imageToShow.removeClassNames("image_wrong", "image_correct", "image_unseen");
+        updateOverviewImages();
     }
 
     private void showPreviousImage() {
@@ -120,22 +115,15 @@ public class TuningGame extends VerticalLayout implements MuffinView {
             index--;
         }
 
-        Image imageToShow = images.get(index);
-
-        vaadinSession.access((Command) () -> {
-            currentImage.setSrc(imageToShow.getSrc());
-            imageToShow.removeClassNames("image_wrong", "image_correct", "image_unseen");
-        });
+        updateImage();
     }
 
     @Override
     public void handleInput(String command) {
         if (command.equals(Tag.NEXT_BUTTON)) {
             showNextImage();
-            updateOverviewImages();
         } else if (command.equals(Tag.PREVIOUS_BUTTON)) {
             showPreviousImage();
-            updateOverviewImages();
         } else if (command.contains("P")) {
             String[] values = command.split(":");
             int value = Integer.parseInt(values[1]);
