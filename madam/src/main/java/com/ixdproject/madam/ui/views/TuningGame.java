@@ -28,7 +28,7 @@ public class TuningGame extends VerticalLayout implements MuffinView {
     private List<Image> overheadImages = imageManager.getAllImages();
     private int index = 0;
     private HashMap<Image, Div> overheadImageDivMap = new HashMap<>();
-    private HashMap<String, MufChiValues> imageTunings = new HashMap<>();
+    private MufChiValues tuningValues = new MufChiValues(0, 0, 0);
     private ImageValues imageValues = new ImageValues();
     private VaadinSession vaadinSession;
 
@@ -64,7 +64,6 @@ public class TuningGame extends VerticalLayout implements MuffinView {
             if (!image.getSrc().equals(imageManager.getFirstImage().getSrc())) {
                 image.addClassName("image_unseen");
             }
-            imageTunings.put(image.getSrc(), new MufChiValues(0, 0, 0));
 
             Div imageDiv = new Div(image);
             imageDiv.addClassName("overview_image");
@@ -79,13 +78,16 @@ public class TuningGame extends VerticalLayout implements MuffinView {
     private void updateOverviewImages() {
         overheadImages.forEach(image -> {
             if (!image.hasClassName("image_unseen")) {
-                if (imageTunings.get(image.getSrc()).isCorrect(imageValues.getImageValues(imageManager.getImg(image.getSrc())))) {
+                boolean isCorrect = tuningValues.isCorrect(imageValues.getImageValues(imageManager.getImg(image.getSrc())));
+                if (isCorrect) {
                     vaadinSession.access((Command) () -> {
+                        System.out.println(imageManager.getImg(image.getSrc()) + " is wrong");
                         overheadImageDivMap.get(image).removeClassName("image_wrong");
                         overheadImageDivMap.get(image).addClassName("image_correct");
                     });
                 } else {
                     vaadinSession.access((Command) () -> {
+                        System.out.println(imageManager.getImg(image.getSrc()) + " is correct");
                         overheadImageDivMap.get(image).removeClassName("image_correct");
                         overheadImageDivMap.get(image).addClassName("image_wrong");
                     });
@@ -133,16 +135,15 @@ public class TuningGame extends VerticalLayout implements MuffinView {
         } else if (command.contains("P")) {
             String[] values = command.split(":");
             int value = Integer.parseInt(values[1]);
-
             switch (values[0]) {
                 case "P0":
-                    imageTunings.get(currentImage.getSrc()).setFluffinessValue(value);
+                    tuningValues.setFluffinessValue(value);
                     break;
                 case "P1":
-                    imageTunings.get(currentImage.getSrc()).setRoundnessValue(value);
+                    tuningValues.setRoundnessValue(value);
                     break;
                 default:
-                    imageTunings.get(currentImage.getSrc()).setColorValue(value);
+                    tuningValues.setColorValue(value);
                     break;
             }
             updateOverviewImages();

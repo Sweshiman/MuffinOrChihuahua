@@ -6,6 +6,7 @@ com/ixdproject/madam/ui/views/TuningGame.class
 com/ixdproject/madam/ui/views/GuessingGame.class
 com/ixdproject/madam/backend/ImageManager.class
 com/ixdproject/madam/ui/MainLayout.class
+com/ixdproject/madam/backend/MufChiValues.class
 com/ixdproject/madam/ui/views/MuffinView.class
 com/ixdproject/madam/ui/MainLayoutI.class
 com/ixdproject/madam/backend/ImageManager$Img.class
