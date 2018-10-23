@@ -24,9 +24,9 @@ import java.util.List;
 public class TuningGame extends VerticalLayout implements MuffinView {
 
     private ImageManager imageManager = new ImageManager();
-    private Image currentImage = imageManager.getFirstImage();
-    private List<Image> overheadImages = imageManager.getAllImages();
+    private List<Image> images = imageManager.getTuningGameImages();
     private int index = 0;
+    private Image currentImage = imageManager.getFirstTuningGameImage();
     private HashMap<Image, Div> overheadImageDivMap = new HashMap<>();
     private MufChiValues tuningValues = new MufChiValues(0, 0, 0);
     private ImageValues imageValues = new ImageValues();
@@ -59,9 +59,9 @@ public class TuningGame extends VerticalLayout implements MuffinView {
 
     private Div initOverheadImages() {
         Div imageOverview = new Div();
-        overheadImages.forEach(image -> {
-            image.addClassName("image");
-            if (!image.getSrc().equals(imageManager.getFirstImage().getSrc())) {
+        images.forEach(image -> {
+            image.addClassNames("image");
+            if (!image.getSrc().equals(currentImage.getSrc())) {
                 image.addClassName("image_unseen");
             }
 
@@ -76,52 +76,56 @@ public class TuningGame extends VerticalLayout implements MuffinView {
     }
 
     private void updateOverviewImages() {
-        overheadImages.forEach(image -> {
+        images.forEach(image -> {
             if (!image.hasClassName("image_unseen")) {
+                Div div = overheadImageDivMap.get(image);
+
                 boolean isCorrect = tuningValues.isCorrect(imageValues.getImageValues(imageManager.getImg(image.getSrc())));
                 if (isCorrect) {
                     vaadinSession.access((Command) () -> {
-                        System.out.println(imageManager.getImg(image.getSrc()) + " is wrong");
-                        overheadImageDivMap.get(image).removeClassName("image_wrong");
-                        overheadImageDivMap.get(image).addClassName("image_correct");
+                        div.removeClassName("image_wrong");
+                        div.addClassName("image_correct");
                     });
                 } else {
                     vaadinSession.access((Command) () -> {
-                        System.out.println(imageManager.getImg(image.getSrc()) + " is correct");
-                        overheadImageDivMap.get(image).removeClassName("image_correct");
-                        overheadImageDivMap.get(image).addClassName("image_wrong");
+                        div.removeClassName("image_correct");
+                        div.addClassName("image_wrong");
                     });
                 }
-                vaadinSession.access((Command) () -> image.addClassName("image_transparent"));
+
+                //vaadinSession.access((Command) () -> image.addClassName("image_transparent"));
             }
         });
     }
 
     private void showNextImage() {
-        vaadinSession.access((Command) () ->
-                currentImage.setSrc(imageManager.getNextImageSrc()));
-
-        if (index == overheadImages.size() - 1) {
+        if (index == images.size() - 1) {
             index = 0;
         } else {
             index++;
         }
 
-        vaadinSession.access((Command) () ->
-                overheadImages.get(index).removeClassNames("image_wrong", "image_correct", "image_unseen"));
+        Image imageToShow = images.get(index);
+
+        vaadinSession.access((Command) () -> {
+            currentImage.setSrc(imageToShow.getSrc());
+            imageToShow.removeClassNames("image_wrong", "image_correct", "image_unseen");
+        });
     }
 
     private void showPreviousImage() {
-        vaadinSession.access((Command) () ->
-                currentImage.setSrc(imageManager.getPreviousImageSrc()));
-
         if (index == 0) {
-            index = overheadImages.size() - 1;
+            index = images.size() - 1;
         } else {
             index--;
         }
-        vaadinSession.access((Command) () ->
-                overheadImages.get(index).removeClassNames("image_wrong", "image_correct", "image_unseen"));
+
+        Image imageToShow = images.get(index);
+
+        vaadinSession.access((Command) () -> {
+            currentImage.setSrc(imageToShow.getSrc());
+            imageToShow.removeClassNames("image_wrong", "image_correct", "image_unseen");
+        });
     }
 
     @Override

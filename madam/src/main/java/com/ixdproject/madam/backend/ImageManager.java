@@ -6,15 +6,12 @@ import java.util.*;
 
 public class ImageManager {
 
-    private HashMap<Img, Boolean> tuningGameMap = new HashMap<>();
-    private Img currentImg = Img.CHIHUAHUA1;
     private String currentGuessingGameImage;
     private List<String> guessingGameImages = new ArrayList<>();
     private Random random = new Random();
     private int guessingGameScore = 0;
 
     public ImageManager() {
-        initTuningGame();
         initGuessingGameImages();
     }
 
@@ -28,27 +25,34 @@ public class ImageManager {
         MUFFIN2,
         MUFFIN3,
         MUFFIN4,
-        MUFFIN5
+        MUFFIN5,
+        TUNING_GAME_1,
+        TUNING_GAME_2,
+        TUNING_GAME_3,
+        TUNING_GAME_4,
+        TUNING_GAME_5,
+        TUNING_GAME_6,
+        TUNING_GAME_7,
+        TUNING_GAME_8
     }
 
-    public void setIsCorrect(Img img, Boolean isCorrect) {
-        tuningGameMap.put(img, isCorrect);
+    public Image getFirstTuningGameImage() {
+        return getImage(Img.TUNING_GAME_1);
     }
 
-    public Boolean isCorrect(Img img) {
-        return tuningGameMap.get(img);
-    }
+    public List<Image> getTuningGameImages() {
+        List<Image> tuningImages = new ArrayList<>();
 
-    public Image getCurrentImage() {
-        return getImage(currentImg);
-    }
+        tuningImages.add(getImage(Img.TUNING_GAME_1));
+        tuningImages.add(getImage(Img.TUNING_GAME_2));
+        tuningImages.add(getImage(Img.TUNING_GAME_3));
+        tuningImages.add(getImage(Img.TUNING_GAME_4));
+        tuningImages.add(getImage(Img.TUNING_GAME_5));
+        tuningImages.add(getImage(Img.TUNING_GAME_6));
+        tuningImages.add(getImage(Img.TUNING_GAME_7));
+        tuningImages.add(getImage(Img.TUNING_GAME_8));
 
-    public Image getFirstImage() {
-        return getImage(Img.CHIHUAHUA1);
-    }
-
-    public Img getCurrentImg() {
-        return currentImg;
+        return tuningImages;
     }
 
     public boolean isLastGuessingGameImage() {
@@ -65,19 +69,6 @@ public class ImageManager {
             return true;
         }
         return false;
-    }
-
-    private void initTuningGame() {
-        tuningGameMap.put(Img.MUFFIN1, false);
-        tuningGameMap.put(Img.MUFFIN2, false);
-        tuningGameMap.put(Img.MUFFIN3, false);
-        tuningGameMap.put(Img.MUFFIN4, false);
-        tuningGameMap.put(Img.MUFFIN5, false);
-        tuningGameMap.put(Img.CHIHUAHUA1, false);
-        tuningGameMap.put(Img.CHIHUAHUA2, false);
-        tuningGameMap.put(Img.CHIHUAHUA3, false);
-        tuningGameMap.put(Img.CHIHUAHUA4, false);
-        tuningGameMap.put(Img.CHIHUAHUA5, false);
     }
 
     private void initGuessingGameImages() {
@@ -99,87 +90,6 @@ public class ImageManager {
         guessingGameImages.remove(randomIndex);
         currentGuessingGameImage = s;
         return s;
-    }
-
-    public String getPreviousImageSrc() {
-        switch (currentImg) {
-            case CHIHUAHUA1:
-                currentImg = Img.MUFFIN5;
-                return "frontend/img/guessing_game/muffin5.png";
-            case CHIHUAHUA2:
-                currentImg = Img.CHIHUAHUA1;
-                return "frontend/img/guessing_game/chi1.jpg";
-            case CHIHUAHUA3:
-                currentImg = Img.CHIHUAHUA2;
-                return "frontend/img/guessing_game/chi2.jpg";
-            case CHIHUAHUA4:
-                currentImg = Img.CHIHUAHUA3;
-                return "frontend/img/guessing_game/chi3.jpg";
-            case CHIHUAHUA5:
-                currentImg = Img.CHIHUAHUA4;
-                return "frontend/img/guessing_game/chi4.jpg";
-            case MUFFIN1:
-                currentImg = Img.CHIHUAHUA5;
-                return "frontend/img/guessing_game/chi5.jpg";
-            case MUFFIN2:
-                currentImg = Img.MUFFIN1;
-                return "frontend/img/guessing_game/muffin1.png";
-            case MUFFIN3:
-                currentImg = Img.MUFFIN2;
-                return "frontend/img/guessing_game/muffin2.png";
-            case MUFFIN4:
-                currentImg = Img.MUFFIN3;
-                return "frontend/img/guessing_game/muffin3.png";
-            case MUFFIN5:
-                currentImg = Img.MUFFIN4;
-                return "frontend/img/guessing_game/muffin4.png";
-            default:
-                currentImg = Img.CHIHUAHUA1;
-                return "frontend/img/guessing_game/chi1.jpg";
-        }
-    }
-
-    public String getNextImageSrc() {
-        switch (currentImg) {
-            case CHIHUAHUA1:
-                currentImg = Img.CHIHUAHUA2;
-                return "frontend/img/guessing_game/chi2.jpg";
-            case CHIHUAHUA2:
-                currentImg = Img.CHIHUAHUA3;
-                return "frontend/img/guessing_game/chi3.jpg";
-            case CHIHUAHUA3:
-                currentImg = Img.CHIHUAHUA4;
-                return "frontend/img/guessing_game/chi4.jpg";
-            case CHIHUAHUA4:
-                currentImg = Img.CHIHUAHUA5;
-                return "frontend/img/guessing_game/chi5.jpg";
-            case CHIHUAHUA5:
-                currentImg = Img.MUFFIN1;
-                return "frontend/img/guessing_game/muffin1.png";
-            case MUFFIN1:
-                currentImg = Img.MUFFIN2;
-                return "frontend/img/guessing_game/muffin2.png";
-            case MUFFIN2:
-                currentImg = Img.MUFFIN3;
-                return "frontend/img/guessing_game/muffin3.png";
-            case MUFFIN3:
-                currentImg = Img.MUFFIN4;
-                return "frontend/img/guessing_game/muffin4.png";
-            case MUFFIN4:
-                currentImg = Img.MUFFIN5;
-                return "frontend/img/guessing_game/muffin5.png";
-            default:
-                currentImg = Img.CHIHUAHUA1;
-                return "frontend/img/guessing_game/chi1.jpg";
-        }
-    }
-
-    public List<Image> getAllImages() {
-        List<Image> images = new ArrayList<>();
-        for (Img img : Img.values()) {
-            images.add(getImage(img));
-        }
-        return images;
     }
 
     private Image getImage(Img img) {
@@ -204,8 +114,22 @@ public class ImageManager {
                 return new Image("frontend/img/guessing_game/muffin4.png", "");
             case MUFFIN5:
                 return new Image("frontend/img/guessing_game/muffin5.png", "");
+            case TUNING_GAME_1:
+                return new Image("frontend/img/tuning_game/chi1.jpg", "");
+            case TUNING_GAME_2:
+                return new Image("frontend/img/tuning_game/muffin1.jpg", "");
+            case TUNING_GAME_3:
+                return new Image("frontend/img/tuning_game/chi2.jpg", "");
+            case TUNING_GAME_4:
+                return new Image("frontend/img/tuning_game/muffin2.jpg", "");
+            case TUNING_GAME_5:
+                return new Image("frontend/img/tuning_game/chi3.jpg", "");
+            case TUNING_GAME_6:
+                return new Image("frontend/img/tuning_game/muffin3.jpg", "");
+            case TUNING_GAME_7:
+                return new Image("frontend/img/tuning_game/chi4.jpg", "");
             default:
-                return new Image();
+                return new Image("frontend/img/tuning_game/muffin4.jpg", "");
         }
     }
 
@@ -229,8 +153,24 @@ public class ImageManager {
                 return Img.MUFFIN3;
             case "frontend/img/guessing_game/muffin4.png":
                 return Img.MUFFIN4;
-            default:
+            case "frontend/img/guessing_game/muffin5.png":
                 return Img.MUFFIN5;
+            case "frontend/img/tuning_game/chi1.jpg":
+                return Img.TUNING_GAME_1;
+            case "frontend/img/tuning_game/muffin1.jpg":
+                return Img.TUNING_GAME_2;
+            case "frontend/img/tuning_game/chi2.jpg":
+                return Img.TUNING_GAME_3;
+            case "frontend/img/tuning_game/muffin2.jpg":
+                return Img.TUNING_GAME_4;
+            case "frontend/img/tuning_game/chi3.jpg":
+                return Img.TUNING_GAME_5;
+            case "frontend/img/tuning_game/muffin3.jpg":
+                return Img.TUNING_GAME_6;
+            case "frontend/img/tuning_game/chi4.jpg":
+                return Img.TUNING_GAME_7;
+            default:
+                return Img.TUNING_GAME_8;
         }
     }
 

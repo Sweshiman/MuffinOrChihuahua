@@ -8,13 +8,12 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-@HtmlImport("frontend://src/views/video.html")
 @Route(value = "video", layout = MainLayout.class)
 @PageTitle("Video")
 public class VideoView extends VerticalLayout implements MuffinView {
 
     public void showVideoView(MainLayoutI mainLayout) {
-
+        mainLayout.add(new Video());
     }
 
     @Override

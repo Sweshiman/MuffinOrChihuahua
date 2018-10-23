@@ -2,9 +2,9 @@ package com.ixdproject.madam.backend;
 
 public class MufChiValues {
 
-    private int fluffinessValue = 0;
-    private int roundnessValue = 0;
-    private int colorValue = 0;
+    private int fluffinessValue;
+    private int roundnessValue;
+    private int colorValue;
 
     public MufChiValues(int fluffinessValue, int roundnessValue, int colorValue) {
         this.fluffinessValue = fluffinessValue;
@@ -16,24 +16,11 @@ public class MufChiValues {
         int dogginess = this.fluffinessValue * correctValues.fluffinessValue
                 + this.roundnessValue * correctValues.roundnessValue
                 + this.colorValue * correctValues.colorValue;
-
-        return dogginess >= .6;
+        return dogginess >= 6000/*.6*/;
     }
 
-    public int getFluffinessValue() {
-        return fluffinessValue;
-    }
-
-    public int getRoundnessValue() {
-        return roundnessValue;
-    }
-
-    public int getColorValue() {
-        return colorValue;
-    }
-
-    public void setFluffinessValue(int fluffynessValue) {
-        this.fluffinessValue = fluffynessValue;
+    public void setFluffinessValue(int fluffinessValue) {
+        this.fluffinessValue = fluffinessValue;
     }
 
     public void setRoundnessValue(int roundnessValue) {

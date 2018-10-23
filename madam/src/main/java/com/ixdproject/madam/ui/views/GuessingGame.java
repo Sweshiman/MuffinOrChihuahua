@@ -89,9 +89,7 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
         });
         //chihuahuaButton.addClassName("invisible");
 
-        videoViewButton = new Button("Video view", event -> {
-            mainLayout.switchToVideoView();
-        });
+        videoViewButton = new Button("Video view", event -> mainLayout.switchToVideoView());
         //videoViewButton.addClassName("invisible");
 
         return new Div(muffinButton, chihuahuaButton, videoViewButton);
