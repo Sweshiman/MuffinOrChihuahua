@@ -30,6 +30,7 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
     private Button muffinButton;
     private Button chihuahuaButton;
     private Button videoViewButton;
+    private Button tuningGameButton;
 
     public void showGuessingGame(MainLayoutI layout) {
         currentImage.setClassName("current_image");
@@ -90,9 +91,9 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
         //chihuahuaButton.addClassName("invisible");
 
         videoViewButton = new Button("Video view", event -> mainLayout.switchToVideoView());
-        //videoViewButton.addClassName("invisible");
+        tuningGameButton = new Button("Tuning game", event -> mainLayout.switchToTuningGame());
 
-        return new Div(muffinButton, chihuahuaButton, videoViewButton);
+        return new Div(muffinButton, chihuahuaButton, videoViewButton, tuningGameButton);
     }
 
     private void gameOver() {

@@ -41,11 +41,15 @@ public class ArduinoReader extends Thread {
                     Thread.sleep(5);
                 }
 
-                byte[] readBuffer = new byte[comPort.bytesAvailable()];
-                int numRead = comPort.readBytes(readBuffer, readBuffer.length);
-                buffer += new String(readBuffer, "UTF-8");
-                //HANDLE DATA
-                handleBuffer(comPort);
+                try {
+                    byte[] readBuffer = new byte[comPort.bytesAvailable()];
+                    int numRead = comPort.readBytes(readBuffer, readBuffer.length);
+                    buffer += new String(readBuffer, "UTF-8");
+                    //HANDLE DATA
+                    handleBuffer(comPort);
+                } catch (Exception e) {
+                    System.out.println("Negative array");
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

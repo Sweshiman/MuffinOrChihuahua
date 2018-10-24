@@ -73,8 +73,16 @@ public class TuningGame extends VerticalLayout implements MuffinView {
     private void updateOverviewImages() {
         images.forEach(image -> {
             if (!image.hasClassName("image_unseen")) {
+
+                if (image.getSrc().equals(currentImage.getSrc())) {
+                    overheadImageDivMap.get(image).addClassName("image_focus");
+                } else {
+                    overheadImageDivMap.get(image).removeClassName("image_focus");
+                }
+
                 Div div = overheadImageDivMap.get(image);
-                boolean isCorrect = tuningValues.isCorrect(imageValues.getImageValues(imageManager.getImg(image.getSrc())));
+                boolean isDog = tuningValues.isDog(imageValues.getImageValues(imageManager.getImg(image.getSrc())));
+                boolean isCorrect = imageManager.isDogImage(image.getSrc()) && isDog;
 
                 if (isCorrect) {
                     vaadinSession.access((Command) () -> {

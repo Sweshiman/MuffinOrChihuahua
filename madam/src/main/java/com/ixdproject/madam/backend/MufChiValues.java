@@ -12,11 +12,15 @@ public class MufChiValues {
         this.colorValue = colorValue;
     }
 
-    public boolean isCorrect(MufChiValues correctValues) {
-        int dogginess = this.fluffinessValue * correctValues.fluffinessValue
-                + this.roundnessValue * correctValues.roundnessValue
-                + this.colorValue * correctValues.colorValue;
-        return dogginess >= 6000/*.6*/;
+    public boolean isDog(MufChiValues correctValues) {
+        int dogginess = ((this.fluffinessValue / 64) - 8) * correctValues.fluffinessValue
+                * ((this.roundnessValue / 64 ) - 8) * correctValues.roundnessValue
+                * ((this.colorValue / 64) - 8) * correctValues.colorValue;
+        System.out.println("FluffinessWeight: " + ((this.fluffinessValue / 64) - 8) +
+                            "RoundnessWeight: " + ((this.roundnessValue / 64 ) - 8) +
+                            "ColorWeight: " + ((this.colorValue / 64) - 8));
+        System.out.println(dogginess);
+        return dogginess >= 3000;
     }
 
     public void setFluffinessValue(int fluffinessValue) {
@@ -29,5 +33,17 @@ public class MufChiValues {
 
     public void setColorValue(int colorValue) {
         this.colorValue = colorValue;
+    }
+
+    public int getFluffinessValue() {
+        return fluffinessValue;
+    }
+
+    public int getRoundnessValue() {
+        return roundnessValue;
+    }
+
+    public int getColorValue() {
+        return colorValue;
     }
 }

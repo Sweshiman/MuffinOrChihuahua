@@ -174,6 +174,13 @@ public class ImageManager {
         }
     }
 
+    public Boolean isDogImage(String imgSrc) {
+        return (imgSrc.equals("frontend/img/tuning_game/chi1.jpg") ||
+                imgSrc.equals("frontend/img/tuning_game/chi2.jpg") ||
+                imgSrc.equals("frontend/img/tuning_game/chi3.jpg") ||
+                imgSrc.equals("frontend/img/tuning_game/chi4.jpg"));
+    }
+
     private String getCurrentGuessingGameImgTag() {
         if (currentGuessingGameImage.equals("frontend/img/guessing_game/chi1.jpg")
                 || currentGuessingGameImage.equals("frontend/img/guessing_game/chi2.jpg")
