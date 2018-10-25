@@ -2,18 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92708d1c-24bc-450e-9ee6-4b206560017f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/frontend/img/after_game.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/frontend/img/before_game.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/ImageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/ImageManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/MufChiValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/MufChiValues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/MainLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/MainLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/MainLayoutI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/MainLayoutI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/GuessingGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/GuessingGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/TuningGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/TuningGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/VideoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/VideoView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/frontend/styles/shared-styles.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/frontend/styles/shared-styles.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/backend/ArduinoReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/backend/ArduinoReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/backend/ImageManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/backend/ImageManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/backend/MufChiValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/backend/MufChiValues.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/MainLayout.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/MainLayout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/MainLayoutI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/MainLayoutI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/views/GuessingGame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/views/GuessingGame$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/views/GuessingGame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/views/GuessingGame$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/views/GuessingGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/views/GuessingGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/views/TuningGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/views/TuningGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/views/VideoView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/views/VideoView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/views/VideoView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/views/VideoView$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/views/VideoView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ixdproject/madam/ui/views/VideoView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,21 +82,22 @@
           <entry key="project.closed" value="5" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.14" value="1" />
-          <entry key="project.open.time.15" value="3" />
-          <entry key="project.open.time.16" value="3" />
+          <entry key="project.open.time.15" value="4" />
+          <entry key="project.open.time.16" value="5" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="15" />
           <entry key="html" value="6" />
-          <entry key="java" value="59" />
+          <entry key="java" value="61" />
           <entry key="jpg" value="1" />
           <entry key="kt" value="4" />
+          <entry key="png" value="1" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
@@ -95,8 +105,8 @@
         <counts>
           <entry key="CLASS" value="15" />
           <entry key="HTML" value="6" />
-          <entry key="Image" value="1" />
-          <entry key="JAVA" value="59" />
+          <entry key="Image" value="2" />
+          <entry key="JAVA" value="61" />
           <entry key="Kotlin" value="4" />
           <entry key="XML" value="2" />
         </counts>
@@ -104,16 +114,16 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="12" />
-          <entry key="html" value="1672" />
-          <entry key="java" value="18015" />
+          <entry key="html" value="1817" />
+          <entry key="java" value="19750" />
           <entry key="kt" value="1056" />
           <entry key="xml" value="47" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="1672" />
-          <entry key="JAVA" value="18015" />
+          <entry key="HTML" value="1817" />
+          <entry key="JAVA" value="19750" />
           <entry key="Kotlin" value="1056" />
           <entry key="PLAIN_TEXT" value="12" />
           <entry key="XML" value="47" />
@@ -126,8 +136,36 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/MainLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="26" column="37" lean-forward="true" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+            <state relative-caret-position="425">
+              <caret line="90" column="26" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="26" />
+              <folding>
+                <element signature="e#2406#2407#0" expanded="true" />
+                <element signature="e#2442#2443#0" expanded="true" />
+                <element signature="e#2489#2490#0" expanded="true" />
+                <element signature="e#2525#2526#0" expanded="true" />
+                <element signature="e#2587#2588#0" expanded="true" />
+                <element signature="e#2624#2625#0" expanded="true" />
+                <element signature="e#2695#2696#0" expanded="true" />
+                <element signature="e#2714#2715#0" expanded="true" />
+                <element signature="e#2595#2596#0" expanded="true" />
+                <element signature="e#2631#2632#0" expanded="true" />
+                <element signature="e#2718#2719#0" expanded="true" />
+                <element signature="e#2742#2743#0" expanded="true" />
+                <element signature="e#2669#2670#0" expanded="true" />
+                <element signature="e#2702#2703#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/MainLayoutI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -135,8 +173,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/ImageManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="61" column="18" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
+            <state relative-caret-position="960">
+              <caret line="74" column="31" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#353#354#0" expanded="true" />
@@ -153,43 +191,36 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/GuessingGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="91" column="8" lean-forward="true" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="8" />
+            <state relative-caret-position="313">
+              <caret line="87" column="41" selection-start-line="87" selection-start-column="41" selection-end-line="87" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/ArduinoReader.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/VideoView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="262">
+              <caret line="66" column="45" lean-forward="true" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#582#583#0" expanded="true" />
+                <element signature="e#1799#2021#0" expanded="true" />
+                <element signature="e#2020#2021#0" expanded="true" />
+                <element signature="e#2096#2227#0" expanded="true" />
+                <element signature="e#2226#2227#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/VideoView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
-              <folding>
-                <element signature="e#1758#1980#0" expanded="true" />
-                <element signature="e#1979#1980#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/TuningGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1740">
-              <caret line="133" column="26" selection-start-line="133" selection-start-column="26" selection-end-line="133" selection-end-column="26" />
+            <state relative-caret-position="416">
+              <caret line="185" column="36" lean-forward="true" selection-start-line="185" selection-start-column="36" selection-end-line="185" selection-end-column="36" />
+              <folding>
+                <element signature="e#4554#4804#0" expanded="true" />
+                <element signature="e#4803#4804#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -198,7 +229,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/MufChiValues.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+              <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -215,8 +246,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/frontend/styles/shared-styles.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="42" column="10" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
+            <state relative-caret-position="351">
+              <caret line="58" column="24" lean-forward="true" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -235,7 +266,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>currentImage</find>
       <find>imageValues</find>
       <find>imageTunings</find>
       <find>mufch</find>
@@ -263,8 +293,9 @@
       <find>image_unseen</find>
       <find>guessing_game/chi</find>
       <find>title</find>
-      <find>points</find>
       <find>h1</find>
+      <find>switchToFinishPage</find>
+      <find>points</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -309,16 +340,16 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/ImageValues.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/Video.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/frontend/src/views/video.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/MufChiValues.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/Tag.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/MainLayoutI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/ArduinoReader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/TuningGame.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/ImageManager.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/frontend/styles/shared-styles.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/MainLayout.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/GuessingGame.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/VideoView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/MufChiValues.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/frontend/styles/shared-styles.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/MainLayoutI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/MainLayout.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/TuningGame.java" />
       </list>
     </option>
   </component>
@@ -340,6 +371,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -439,16 +471,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-              <item name="guessing_game" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="madam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="madam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="styles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -464,7 +486,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -475,14 +496,14 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540475205443" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540483065120" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/frontend/img" />
       <recent name="$PROJECT_DIR$/src/main/webapp/frontend/img/guessing_game" />
       <recent name="$PROJECT_DIR$/src/main/webapp/frontend/src/views" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/frontend/img" />
       <recent name="$PROJECT_DIR$/src/main/webapp/frontend/vid" />
     </key>
   </component>
@@ -586,7 +607,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2932761" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30615166" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -600,9 +621,9 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32920793" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49928468" visible="true" weight="0.31930694" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49928468" visible="true" weight="0.31930694" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5007153" side_tool="true" weight="0.32920793" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32920793" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32920793" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -618,7 +639,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/CategoryService.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/ReviewService.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/Review.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/common/AbstractEditorDialog.java" />
@@ -793,66 +813,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/MainLayoutI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/TuningGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1740">
-          <caret line="133" column="26" selection-start-line="133" selection-start-column="26" selection-end-line="133" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/MufChiValues.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/ImageValues.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/frontend/styles/shared-styles.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="42" column="10" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/ArduinoReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#582#583#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/MainLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="26" column="37" lean-forward="true" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/frontend/img/after_game.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/ImageManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="61" column="18" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
+        <state relative-caret-position="960">
+          <caret line="74" column="31" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#353#354#0" expanded="true" />
@@ -865,20 +832,101 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/ImageValues.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/ArduinoReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#471#472#0" expanded="true" />
+            <element signature="e#503#504#0" expanded="true" />
+            <element signature="e#540#541#0" expanded="true" />
+            <element signature="e#582#583#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/backend/MufChiValues.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/GuessingGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="91" column="8" lean-forward="true" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="8" />
+        <state relative-caret-position="313">
+          <caret line="87" column="41" selection-start-line="87" selection-start-column="41" selection-end-line="87" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/frontend/styles/shared-styles.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="58" column="24" lean-forward="true" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/MainLayoutI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/MainLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="90" column="26" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="26" />
+          <folding>
+            <element signature="e#2406#2407#0" expanded="true" />
+            <element signature="e#2442#2443#0" expanded="true" />
+            <element signature="e#2489#2490#0" expanded="true" />
+            <element signature="e#2525#2526#0" expanded="true" />
+            <element signature="e#2587#2588#0" expanded="true" />
+            <element signature="e#2624#2625#0" expanded="true" />
+            <element signature="e#2695#2696#0" expanded="true" />
+            <element signature="e#2714#2715#0" expanded="true" />
+            <element signature="e#2595#2596#0" expanded="true" />
+            <element signature="e#2631#2632#0" expanded="true" />
+            <element signature="e#2718#2719#0" expanded="true" />
+            <element signature="e#2742#2743#0" expanded="true" />
+            <element signature="e#2669#2670#0" expanded="true" />
+            <element signature="e#2702#2703#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/VideoView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+        <state relative-caret-position="262">
+          <caret line="66" column="45" lean-forward="true" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
           <folding>
-            <element signature="e#1758#1980#0" expanded="true" />
-            <element signature="e#1979#1980#0" expanded="true" />
+            <element signature="e#1799#2021#0" expanded="true" />
+            <element signature="e#2020#2021#0" expanded="true" />
+            <element signature="e#2096#2227#0" expanded="true" />
+            <element signature="e#2226#2227#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ixdproject/madam/ui/views/TuningGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="185" column="36" lean-forward="true" selection-start-line="185" selection-start-column="36" selection-end-line="185" selection-end-column="36" />
+          <folding>
+            <element signature="e#4554#4804#0" expanded="true" />
+            <element signature="e#4803#4804#0" expanded="true" />
           </folding>
         </state>
       </provider>

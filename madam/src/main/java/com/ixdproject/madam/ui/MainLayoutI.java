@@ -12,4 +12,7 @@ public interface MainLayoutI {
     ArduinoReader getArduinoReader();
     void add(Component... components);
     void removeAll();
+    void removeCssClass(String className);
+    void addCssClass(String className);
+    void removeComponent(Component... components);
 }

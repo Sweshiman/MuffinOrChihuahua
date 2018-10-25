@@ -16,8 +16,7 @@ import com.ixdproject.madam.ui.MainLayout;
 import com.vaadin.flow.server.Command;
 import com.vaadin.flow.server.VaadinSession;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Route(value = "tuning_game", layout = MainLayout.class)
 @PageTitle("Tuning game")
@@ -34,13 +33,23 @@ public class TuningGame extends VerticalLayout implements MuffinView {
     private MainLayoutI mainLayout;
     private boolean dogFlag;
     private boolean isNewImage = true;
+    private HashMap<Image, Boolean> correctImages = new HashMap<>();
+    private Timer timer = new Timer();
+    private boolean isGameOver = false;
+    private boolean isPreGame = true;
+    private Image preGameImage;
 
     public void showTuningGame(MainLayoutI mainLayout) {
         currentImage.setClassName("current_image");
         vaadinSession = mainLayout.getVaadinSession();
         this.mainLayout = mainLayout;
 
-        mainLayout.add(initOverheadImages(), currentImage);
+        images.forEach(image -> correctImages.put(image, false));
+
+        preGameImage = new Image("frontend/img/before_game.png", "");
+        preGameImage.setClassName("pregame__image");
+
+        mainLayout.add(preGameImage, initOverheadImages(), currentImage);
     }
 
     private Div initOverheadImages() {
@@ -68,6 +77,7 @@ public class TuningGame extends VerticalLayout implements MuffinView {
                 Div div = overheadImageDivMap.get(image);
                 boolean isDog = tuningValues.isDog(imageValues.getImageValues(imageManager.getImg(image.getSrc())));
                 boolean isCorrect = imageManager.isDogImage(image.getSrc()) == isDog;
+                correctImages.put(image, isCorrect);
 
                 if (image.getSrc().equals(currentImage.getSrc())) {
                     vaadinSession.access((Command) () -> overheadImageDivMap.get(image).addClassName("image_focus"));
@@ -97,6 +107,25 @@ public class TuningGame extends VerticalLayout implements MuffinView {
                 }
             }
         });
+        boolean isDone = true;
+        for (Map.Entry<Image, Boolean> entry : correctImages.entrySet()) {
+            if (!entry.getValue() || entry.getKey().hasClassName("image_unseen")) {
+                isDone = false;
+            }
+        }
+        if (isDone) {
+            vaadinSession.access((Command) () -> timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    vaadinSession.lock();
+                    mainLayout.removeAll();
+                    mainLayout.removeCssClass("max-width");
+                    mainLayout.add(new Image("frontend/img/after_game.png", ""));
+                    vaadinSession.unlock();
+                }
+            }, 3 * 1000));
+            isGameOver = true;
+        }
     }
 
     private void showNextImage() {
@@ -138,26 +167,38 @@ public class TuningGame extends VerticalLayout implements MuffinView {
 
     @Override
     public void handleInput(String command) {
-        if (command.equals(Tag.NEXT_BUTTON)) {
-            showNextImage();
-        } else if (command.equals(Tag.PREVIOUS_BUTTON)) {
-            showPreviousImage();
-        } else if (command.contains("P")) {
-            String[] values = command.split(":");
-            int value = Integer.parseInt(values[1]);
-            switch (values[0]) {
-                case "P0":
-                    tuningValues.setFluffinessValue(value);
-                    break;
-                case "P1":
-                    tuningValues.setRoundnessValue(value);
-                    break;
-                default:
-                    tuningValues.setColorValue(value);
-                    break;
+        if (isPreGame) {
+            if (command.equals(Tag.NEXT_BUTTON)) {
+                vaadinSession.access((Command) () -> {
+                    mainLayout.addCssClass("max-width");
+                    mainLayout.removeComponent(preGameImage);
+                    isPreGame = false;
+                });
             }
-            updateOverviewImages();
-        } else if (command.equals(Tag.RESET)) {
+        } else {
+            if (command.equals(Tag.NEXT_BUTTON) && !isGameOver) {
+                showNextImage();
+            } else if (command.equals(Tag.PREVIOUS_BUTTON) && !isGameOver) {
+                showPreviousImage();
+            } else if (command.contains("P") && !isGameOver) {
+                String[] values = command.split(":");
+                int value = Integer.parseInt(values[1]);
+                switch (values[0]) {
+                    case "P0":
+                        tuningValues.setFluffinessValue(value);
+                        break;
+                    case "P1":
+                        tuningValues.setRoundnessValue(value);
+                        break;
+                    default:
+                        tuningValues.setColorValue(value);
+                        break;
+                }
+                updateOverviewImages();
+            }
+        }
+
+        if (command.equals(Tag.RESET)) {
             vaadinSession.access((Command) () -> mainLayout.switchToGuessingGame());
         }
     }

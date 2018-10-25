@@ -36,12 +36,14 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
         this.mainLayout = mainLayout;
         vaadinSession = mainLayout.getVaadinSession();
 
-        pointsSpan = new Span("Points: " + imageManager.getGuessingGameScore());
+        pointsSpan = new Span("Poäng: " + imageManager.getGuessingGameScore());
         pointsSpan.addClassNames("points__span", "white");
         H1 title = new H1("Muffin eller chihuahua?");
+        H2 whatWasIt = new H2("Vad var det? :o");
+        whatWasIt.addClassNames("behind", "white");
         title.addClassNames("guessing-game__title", "text__center");
 
-        mainLayout.add(title, pointsSpan, currentImage, initButtons());
+        mainLayout.add(title, whatWasIt, pointsSpan, currentImage, initButtons());
     }
 
     private void fadeImage() {
@@ -72,7 +74,7 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
                 gameOver();
             } else {
                 currentImage.setSrc(imageManager.getRandomImage());
-                pointsSpan.setText("Points: " + imageManager.getGuessingGameScore());
+                pointsSpan.setText("Poäng: " + imageManager.getGuessingGameScore());
                 fadeImage();
             }
         });
@@ -83,7 +85,7 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
                 gameOver();
             } else {
                 currentImage.setSrc(imageManager.getRandomImage());
-                pointsSpan.setText("Points: " + imageManager.getGuessingGameScore());
+                pointsSpan.setText("Poäng: " + imageManager.getGuessingGameScore());
                 fadeImage();
             }
         });
@@ -108,7 +110,7 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
         int finalScore = imageManager.getGuessingGameScore();
 
         H2 congratsText = new H2("Du fick " + finalScore + " poäng! \n");
-        H4 toVideoViewText = new H4("Klicka på 'nästa' för att gå vidare");
+        H4 toVideoViewText = new H4("Tryck på högerpilen för att gå vidare");
         congratsText.addClassNames("white", "text__center");
         toVideoViewText.addClassNames("white", "text__center");
 

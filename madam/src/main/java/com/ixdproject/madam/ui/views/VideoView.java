@@ -24,6 +24,7 @@ public class VideoView extends VerticalLayout implements MuffinView {
     private VaadinSession vaadinSession;
     private Timer timer = new Timer();
     private MainLayoutI mainLayout;
+    private boolean isSkippable = true;
 
     public void showVideoView(MainLayoutI mainLayout) {
         vaadinSession = mainLayout.getVaadinSession();
@@ -43,7 +44,7 @@ public class VideoView extends VerticalLayout implements MuffinView {
                 mainLayout.add(video);
                 vaadinSession.unlock();
             }
-        }, 200));
+        }, 300));
 
         vaadinSession.access((Command) () -> timer.schedule(new TimerTask() {
             @Override
@@ -53,12 +54,27 @@ public class VideoView extends VerticalLayout implements MuffinView {
                 vaadinSession.unlock();
             }
         }, 75 * 1000));
+
+        vaadinSession.access((Command) () -> timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                isSkippable = true;
+            }
+        }, 5 * 1000));
     }
 
     @Override
     public void handleInput(String command) {
         if (command.equals(Tag.RESET)) {
-            vaadinSession.access((Command) () -> mainLayout.switchToGuessingGame());
+            vaadinSession.access((Command) () -> {
+                timer.cancel();
+                mainLayout.switchToGuessingGame();
+            });
+        } else if (isSkippable && command.equals(Tag.NEXT_BUTTON)) {
+            vaadinSession.access((Command) () -> {
+                timer.cancel();
+                mainLayout.switchToTuningGame();
+            });
         }
     }
 }

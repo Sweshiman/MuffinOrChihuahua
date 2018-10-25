@@ -7,6 +7,7 @@ import com.ixdproject.madam.ui.views.VideoView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.component.page.Viewport;
 import com.vaadin.flow.router.RouterLayout;
@@ -54,7 +55,6 @@ public class MainLayout extends Div
 
     public void switchToTuningGame() {
         this.removeAll();
-        addClassName("max-width");
         arduinoReader.write("T".getBytes());
 
         TuningGame tuningGame = new TuningGame();
@@ -74,6 +74,21 @@ public class MainLayout extends Div
     @Override
     public void add(Component... components) {
         super.add(components);
+    }
+
+    @Override
+    public void removeCssClass(String className) {
+        super.removeClassName(className);
+    }
+
+    @Override
+    public void addCssClass(String className) {
+        super.addClassName(className);
+    }
+
+    @Override
+    public void removeComponent(Component... components) {
+        remove(components);
     }
 
     @Override
