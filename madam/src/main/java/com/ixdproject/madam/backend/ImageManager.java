@@ -59,7 +59,7 @@ public class ImageManager {
         return guessingGameImages.isEmpty();
     }
 
-    public int getFinalGuessingGameScore() {
+    public int getGuessingGameScore() {
         return guessingGameScore;
     }
 

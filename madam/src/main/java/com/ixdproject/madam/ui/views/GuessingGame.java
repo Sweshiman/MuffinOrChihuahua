@@ -26,6 +26,7 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
     private VaadinSession vaadinSession;
     private boolean isGameOver = false;
     private Timer timer = new Timer();
+    private Span pointsSpan;
 
     private Button muffinButton;
     private Button chihuahuaButton;
@@ -35,10 +36,12 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
         this.mainLayout = mainLayout;
         vaadinSession = mainLayout.getVaadinSession();
 
+        pointsSpan = new Span("Points: " + imageManager.getGuessingGameScore());
+        pointsSpan.addClassNames("points__span", "white");
         H1 title = new H1("Muffin eller chihuahua?");
-        title.addClassNames("guessing-game__title", "text__center", "white");
+        title.addClassNames("guessing-game__title", "text__center");
 
-        mainLayout.add(title, currentImage, initButtons());
+        mainLayout.add(title, pointsSpan, currentImage, initButtons());
     }
 
     private void fadeImage() {
@@ -50,7 +53,7 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
                 currentImage.addClassName("visible");
                 vaadinSession.unlock();
             }
-        }, 100));
+        }, 50));
         vaadinSession.access((Command) () -> timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -59,7 +62,7 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
                 currentImage.removeClassName("visible");
                 vaadinSession.unlock();
             }
-        }, 200));
+        }, 100));
     }
 
     private Div initButtons() {
@@ -69,10 +72,10 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
                 gameOver();
             } else {
                 currentImage.setSrc(imageManager.getRandomImage());
+                pointsSpan.setText("Points: " + imageManager.getGuessingGameScore());
                 fadeImage();
             }
         });
-        muffinButton.addClassName("invisible");
 
         chihuahuaButton = new Button("Chihuahua", event -> {
             imageManager.isCorrectGuessingGameGuess(Tag.CHIHUAHUA);
@@ -80,10 +83,10 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
                 gameOver();
             } else {
                 currentImage.setSrc(imageManager.getRandomImage());
+                pointsSpan.setText("Points: " + imageManager.getGuessingGameScore());
                 fadeImage();
             }
         });
-        chihuahuaButton.addClassName("invisible");
 
         Div buttonDiv = new Div(muffinButton, chihuahuaButton);
         buttonDiv.addClassName("invisible");
@@ -102,11 +105,11 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
         Div div = new Div();
         div.addClassName("congrats_div");
 
-        int finalScore = imageManager.getFinalGuessingGameScore();
+        int finalScore = imageManager.getGuessingGameScore();
 
-        H1 congratsText = new H1("Du fick " + finalScore + " poäng! \n");
+        H2 congratsText = new H2("Du fick " + finalScore + " poäng! \n");
         H4 toVideoViewText = new H4("Klicka på 'nästa' för att gå vidare");
-        congratsText.addClassName("white");
+        congratsText.addClassNames("white", "text__center");
         toVideoViewText.addClassNames("white", "text__center");
 
         div.add(congratsText, toVideoViewText);

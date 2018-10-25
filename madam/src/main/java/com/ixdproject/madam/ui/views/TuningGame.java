@@ -32,6 +32,8 @@ public class TuningGame extends VerticalLayout implements MuffinView {
     private ImageValues imageValues = new ImageValues();
     private VaadinSession vaadinSession;
     private MainLayoutI mainLayout;
+    private boolean dogFlag;
+    private boolean isNewImage = true;
 
     public void showTuningGame(MainLayoutI mainLayout) {
         currentImage.setClassName("current_image");
@@ -65,14 +67,18 @@ public class TuningGame extends VerticalLayout implements MuffinView {
             if (!image.hasClassName("image_unseen")) {
                 Div div = overheadImageDivMap.get(image);
                 boolean isDog = tuningValues.isDog(imageValues.getImageValues(imageManager.getImg(image.getSrc())));
-                boolean isCorrect = imageManager.isDogImage(image.getSrc()) && isDog;
+                boolean isCorrect = imageManager.isDogImage(image.getSrc()) == isDog;
 
                 if (image.getSrc().equals(currentImage.getSrc())) {
                     vaadinSession.access((Command) () -> overheadImageDivMap.get(image).addClassName("image_focus"));
-                    if (isDog) {
-                        mainLayout.getArduinoReader().write("D".getBytes());
-                    } else {
-                        mainLayout.getArduinoReader().write("M".getBytes());
+                    if (isNewImage || dogFlag != isDog) {
+                        isNewImage = false;
+                        dogFlag = isDog;
+                        if (isDog) {
+                            mainLayout.getArduinoReader().write("D".getBytes());
+                        } else {
+                            mainLayout.getArduinoReader().write("M".getBytes());
+                        }
                     }
                 } else {
                     vaadinSession.access((Command) () -> overheadImageDivMap.get(image).removeClassName("image_focus"));
@@ -101,6 +107,7 @@ public class TuningGame extends VerticalLayout implements MuffinView {
         }
 
         mainLayout.getArduinoReader().write("C".getBytes());
+        isNewImage = true;
 
         updateImage();
     }
@@ -124,6 +131,7 @@ public class TuningGame extends VerticalLayout implements MuffinView {
         }
 
         mainLayout.getArduinoReader().write("C".getBytes());
+        isNewImage = true;
 
         updateImage();
     }

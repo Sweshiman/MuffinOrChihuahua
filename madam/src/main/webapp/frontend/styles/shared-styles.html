@@ -33,12 +33,24 @@
             left: 0;
         }
 
+        h2 {
+            margin-bottom: 0.75em;
+            text-align: center;
+            margin-top: 0;
+            font-size: 5em;
+        }
+
+        h4 {
+            margin-bottom: 0;
+            font-size: 2em;
+        }
+
         .text__center {
             text-align: center;
         }
 
         .white {
-            background-color: #f5f6fa;
+            color: #f5f6fa;
         }
 
         .visible {
@@ -57,7 +69,8 @@
 
         .image_overview_container {
             width: 100%;
-            height: 4em;
+            height: auto;
+            max-height: 5em;
             margin: 1em auto 0 auto;
             display: inline-block;
             flex-direction: row;
@@ -78,13 +91,20 @@
         .overview_image {
             display: inline-flex;
             width: 12.5%;
-            height: 100%;
+            height: 4em;
             object-fit: cover;
         }
 
         .image_unseen {
-            opacity: 0.05;
-            background-color: #2f3640;
+            opacity: 0.2;
+            background-color: #f5f6fa;
+        }
+
+        .points__span {
+            position: absolute;
+            top: 1.1em;
+            font-size: 1.5em;
+            right: 5%;
         }
 
         .image_correct {
