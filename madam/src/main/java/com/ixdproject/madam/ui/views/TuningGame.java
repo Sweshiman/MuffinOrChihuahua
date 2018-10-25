@@ -31,24 +31,14 @@ public class TuningGame extends VerticalLayout implements MuffinView {
     private MufChiValues tuningValues = new MufChiValues(0, 0, 0);
     private ImageValues imageValues = new ImageValues();
     private VaadinSession vaadinSession;
+    private MainLayoutI mainLayout;
 
     public void showTuningGame(MainLayoutI mainLayout) {
         currentImage.setClassName("current_image");
+        vaadinSession = mainLayout.getVaadinSession();
+        this.mainLayout = mainLayout;
 
-        mainLayout.add(initOverheadImages(), currentImage
-                // ----- Remove after debug
-                , new Button("Previous", event -> {
-                    showPreviousImage();
-                }),
-                new Button("Next", event -> {
-                    showNextImage();
-                })
-                // ---- Remove after debug
-        );
-    }
-
-    public void setVaadinSession(VaadinSession vaadinSession) {
-        this.vaadinSession = vaadinSession;
+        mainLayout.add(initOverheadImages(), currentImage);
     }
 
     private Div initOverheadImages() {
@@ -73,16 +63,20 @@ public class TuningGame extends VerticalLayout implements MuffinView {
     private void updateOverviewImages() {
         images.forEach(image -> {
             if (!image.hasClassName("image_unseen")) {
-
-                if (image.getSrc().equals(currentImage.getSrc())) {
-                    overheadImageDivMap.get(image).addClassName("image_focus");
-                } else {
-                    overheadImageDivMap.get(image).removeClassName("image_focus");
-                }
-
                 Div div = overheadImageDivMap.get(image);
                 boolean isDog = tuningValues.isDog(imageValues.getImageValues(imageManager.getImg(image.getSrc())));
                 boolean isCorrect = imageManager.isDogImage(image.getSrc()) && isDog;
+
+                if (image.getSrc().equals(currentImage.getSrc())) {
+                    vaadinSession.access((Command) () -> overheadImageDivMap.get(image).addClassName("image_focus"));
+                    if (isDog) {
+                        mainLayout.getArduinoReader().write("D".getBytes());
+                    } else {
+                        mainLayout.getArduinoReader().write("M".getBytes());
+                    }
+                } else {
+                    vaadinSession.access((Command) () -> overheadImageDivMap.get(image).removeClassName("image_focus"));
+                }
 
                 if (isCorrect) {
                     vaadinSession.access((Command) () -> {
@@ -106,13 +100,19 @@ public class TuningGame extends VerticalLayout implements MuffinView {
             index++;
         }
 
+        mainLayout.getArduinoReader().write("C".getBytes());
+
         updateImage();
     }
 
     private void updateImage() {
         Image imageToShow = images.get(index);
-        currentImage.setSrc(imageToShow.getSrc());
-        imageToShow.removeClassNames("image_wrong", "image_correct", "image_unseen");
+        vaadinSession.access((Command) () -> {
+            vaadinSession.lock();
+            currentImage.setSrc(imageToShow.getSrc());
+            imageToShow.removeClassNames("image_wrong", "image_correct", "image_unseen");
+            vaadinSession.unlock();
+        });
         updateOverviewImages();
     }
 
@@ -122,6 +122,8 @@ public class TuningGame extends VerticalLayout implements MuffinView {
         } else {
             index--;
         }
+
+        mainLayout.getArduinoReader().write("C".getBytes());
 
         updateImage();
     }

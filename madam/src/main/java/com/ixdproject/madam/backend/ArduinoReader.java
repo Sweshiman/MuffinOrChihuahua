@@ -8,7 +8,7 @@ import com.ixdproject.madam.ui.views.MuffinView;
  */
 public class ArduinoReader extends Thread {
     private String buffer = "";
-
+    private SerialPort comPort = null;
     private MuffinView view;
 
     public ArduinoReader(MuffinView view) {
@@ -20,8 +20,11 @@ public class ArduinoReader extends Thread {
         this.view = view;
     }
 
+    public void write(byte[] msg) {
+        comPort.writeBytes(msg, 1);
+    }
+
     public void run() {
-        SerialPort comPort = null;
         for (SerialPort sp : SerialPort.getCommPorts()) {
             if (sp.getDescriptivePortName().contains("IOUSBHostDevice") && !sp.getDescriptivePortName().contains("Dial")) {//If not genuine Arduino Uno, change this
                 comPort = sp;
@@ -48,7 +51,7 @@ public class ArduinoReader extends Thread {
                     //HANDLE DATA
                     handleBuffer(comPort);
                 } catch (Exception e) {
-                    System.out.println("Negative array");
+                    e.printStackTrace();
                 }
             }
         } catch (Exception e) {

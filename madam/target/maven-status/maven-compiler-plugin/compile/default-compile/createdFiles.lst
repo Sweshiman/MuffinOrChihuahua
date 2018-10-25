@@ -11,4 +11,6 @@ com/ixdproject/madam/ui/views/MuffinView.class
 com/ixdproject/madam/ui/MainLayoutI.class
 com/ixdproject/madam/backend/ImageManager$Img.class
 com/ixdproject/madam/ui/views/GuessingGame$1.class
+com/ixdproject/madam/ui/views/VideoView$1.class
+com/ixdproject/madam/ui/views/VideoView$2.class
 com/ixdproject/madam/ui/views/GuessingGame$2.class

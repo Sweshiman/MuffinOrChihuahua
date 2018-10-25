@@ -10,24 +10,47 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.Command;
 import com.vaadin.flow.server.VaadinService;
+import com.vaadin.flow.server.VaadinSession;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 @Route(value = "video", layout = MainLayout.class)
 @PageTitle("Video")
 public class VideoView extends VerticalLayout implements MuffinView {
 
+    private VaadinSession vaadinSession;
+    private Timer timer = new Timer();
+
     public void showVideoView(MainLayoutI mainLayout) {
-        Html video = new Html(
-                "<video " +
-                        "width=\"100%\" " +
-                        "height=\"auto\" autoplay><source " +
-                        "src=\"/frontend/vid/vid.mp4\" " +
-                        "type=\"video/mp4\"></video>");
+        vaadinSession = mainLayout.getVaadinSession();
 
-        Button guessingGameButton = new Button("Guessing game", event -> mainLayout.switchToGuessingGame());
-        Button tuningGameButton = new Button("Tuning game", event -> mainLayout.switchToTuningGame());
+        vaadinSession.access((Command) () -> timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                vaadinSession.lock();
+                Html video = new Html(
+                        "<video " +
+                                "width=\"100%\" " +
+                                "height=\"100%\" autoplay><source " +
+                                "src=\"/frontend/vid/vid.mp4\" " +
+                                "type=\"video/mp4\"></video>");
 
-        mainLayout.add(video, new Div(guessingGameButton, tuningGameButton));
+                mainLayout.add(video);
+                vaadinSession.unlock();
+            }
+        }, 200));
+
+        vaadinSession.access((Command) () -> timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                vaadinSession.lock();
+                mainLayout.switchToTuningGame();
+                vaadinSession.unlock();
+            }
+        }, 3/*75*/ * 1000));
     }
 
     @Override

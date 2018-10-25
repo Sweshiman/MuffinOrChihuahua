@@ -13,6 +13,8 @@ public class MufChiValues {
     }
 
     public boolean isDog(MufChiValues correctValues) {
+        // 0 - 870 ish
+        // was 0 - 1024
         int dogginess = ((this.fluffinessValue / 64) - 8) * correctValues.fluffinessValue
                 * ((this.roundnessValue / 64 ) - 8) * correctValues.roundnessValue
                 * ((this.colorValue / 64) - 8) * correctValues.colorValue;

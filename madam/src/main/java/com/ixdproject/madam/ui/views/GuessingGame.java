@@ -29,21 +29,16 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
 
     private Button muffinButton;
     private Button chihuahuaButton;
-    private Button videoViewButton;
-    private Button tuningGameButton;
 
-    public void showGuessingGame(MainLayoutI layout) {
+    public void showGuessingGame(MainLayoutI mainLayout) {
         currentImage.setClassName("current_image");
-        mainLayout = layout;
+        this.mainLayout = mainLayout;
+        vaadinSession = mainLayout.getVaadinSession();
 
         H1 title = new H1("Muffin eller chihuahua?");
         title.addClassNames("guessing-game__title", "text__center");
 
         mainLayout.add(title, currentImage, initButtons());
-    }
-
-    public void setVaadinSession(VaadinSession vaadinSession) {
-        this.vaadinSession = vaadinSession;
     }
 
     private void fadeImage() {
@@ -64,7 +59,7 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
                 currentImage.removeClassName("visible");
                 vaadinSession.unlock();
             }
-        }, 500));
+        }, 200));
     }
 
     private Div initButtons() {
@@ -77,7 +72,7 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
                 fadeImage();
             }
         });
-        //muffinButton.addClassName("invisible");
+        muffinButton.addClassName("invisible");
 
         chihuahuaButton = new Button("Chihuahua", event -> {
             imageManager.isCorrectGuessingGameGuess(Tag.CHIHUAHUA);
@@ -88,17 +83,15 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
                 fadeImage();
             }
         });
-        //chihuahuaButton.addClassName("invisible");
+        chihuahuaButton.addClassName("invisible");
 
-        videoViewButton = new Button("Video view", event -> mainLayout.switchToVideoView());
-        tuningGameButton = new Button("Tuning game", event -> mainLayout.switchToTuningGame());
-
-        return new Div(muffinButton, chihuahuaButton, videoViewButton, tuningGameButton);
+        return new Div(muffinButton, chihuahuaButton);
     }
 
     private void gameOver() {
         mainLayout.removeAll();
         mainLayout.add(endView());
+        mainLayout.getArduinoReader().write("F".getBytes());
         isGameOver = true;
     }
 
@@ -123,7 +116,7 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
         } else if (command.equals(Tag.CHIHUAHUA)) {
             vaadinSession.access((Command) () -> chihuahuaButton.click());
         } else if (command.equals(Tag.NEXT_BUTTON) && isGameOver) {
-            vaadinSession.access((Command) () -> videoViewButton.click());
+            vaadinSession.access((Command) () -> mainLayout.switchToVideoView());
         }
     }
 }

@@ -4,7 +4,5 @@ public class Tag {
     public static final String PREVIOUS_BUTTON = "B0";
     public static final String MUFFIN = "B1";
     public static final String CHIHUAHUA = "B2";
-    public static final String NEXT_BUTTON = "B4";
-    public static final String IMAGE1 = "";
-    public static final String IMAGE2 = "";
+    public static final String NEXT_BUTTON = "B3";
 }

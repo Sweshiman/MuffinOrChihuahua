@@ -21,42 +21,45 @@ public class MainLayout extends Div
         implements RouterLayout, PageConfigurator, MainLayoutI {
 
     private ArduinoReader arduinoReader;
+    private VaadinSession vaadinSession = VaadinSession.getCurrent();
 
     public MainLayout() {
-        addClassName("main-layout");
+        addClassNames("main-layout", "max-width");
 
         GuessingGame guessingGame = new GuessingGame();
-        guessingGame.setVaadinSession(VaadinSession.getCurrent());
         arduinoReader = new ArduinoReader(guessingGame);
         guessingGame.showGuessingGame(this);
 
-        //arduinoReader.start();
+        arduinoReader.start();
     }
 
     public void switchToVideoView() {
         this.removeAll();
+        removeClassName("max-width");
+        arduinoReader.write("V".getBytes());
 
         VideoView videoView = new VideoView();
         arduinoReader.changeView(videoView);
         videoView.showVideoView(this);
     }
 
-    public void switchToGuessingGame() {
-        this.removeAll();
-
-        GuessingGame guessingGame = new GuessingGame();
-        guessingGame.setVaadinSession(VaadinSession.getCurrent());
-        arduinoReader.changeView(guessingGame);
-        guessingGame.showGuessingGame(this);
-    }
-
     public void switchToTuningGame() {
         this.removeAll();
+        addClassName("max-width");
+        arduinoReader.write("T".getBytes());
 
         TuningGame tuningGame = new TuningGame();
-        tuningGame.setVaadinSession(VaadinSession.getCurrent());
         arduinoReader.changeView(tuningGame);
         tuningGame.showTuningGame(this);
+    }
+
+    @Override
+    public VaadinSession getVaadinSession() {
+        return vaadinSession;
+    }
+
+    public ArduinoReader getArduinoReader() {
+        return arduinoReader;
     }
 
     @Override
