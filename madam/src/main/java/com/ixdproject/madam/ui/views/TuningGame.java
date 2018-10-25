@@ -149,6 +149,8 @@ public class TuningGame extends VerticalLayout implements MuffinView {
                     break;
             }
             updateOverviewImages();
+        } else if (command.equals(Tag.RESET)) {
+            vaadinSession.access((Command) () -> mainLayout.switchToGuessingGame());
         }
     }
 }

@@ -5,6 +5,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.server.VaadinSession;
 
 public interface MainLayoutI {
+    void switchToGuessingGame();
     void switchToVideoView();
     void switchToTuningGame();
     VaadinSession getVaadinSession();

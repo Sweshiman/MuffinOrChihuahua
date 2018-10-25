@@ -36,7 +36,7 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
         vaadinSession = mainLayout.getVaadinSession();
 
         H1 title = new H1("Muffin eller chihuahua?");
-        title.addClassNames("guessing-game__title", "text__center");
+        title.addClassNames("guessing-game__title", "text__center", "white");
 
         mainLayout.add(title, currentImage, initButtons());
     }
@@ -72,7 +72,6 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
                 fadeImage();
             }
         });
-        muffinButton.addClassName("invisible");
 
         chihuahuaButton = new Button("Chihuahua", event -> {
             imageManager.isCorrectGuessingGameGuess(Tag.CHIHUAHUA);
@@ -83,9 +82,11 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
                 fadeImage();
             }
         });
-        chihuahuaButton.addClassName("invisible");
 
-        return new Div(muffinButton, chihuahuaButton);
+        Div buttonDiv = new Div(muffinButton, chihuahuaButton);
+        buttonDiv.addClassName("invisible");
+
+        return buttonDiv;
     }
 
     private void gameOver() {
@@ -103,7 +104,8 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
 
         H1 congratsText = new H1("Du fick " + finalScore + " poäng! \n");
         H4 toVideoViewText = new H4("Klicka på 'nästa' för att gå vidare");
-        toVideoViewText.setClassName("text__center");
+        congratsText.addClassName("white");
+        toVideoViewText.addClassNames("white", "text__center");
 
         div.add(congratsText, toVideoViewText);
         return div;
@@ -117,6 +119,8 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
             vaadinSession.access((Command) () -> chihuahuaButton.click());
         } else if (command.equals(Tag.NEXT_BUTTON) && isGameOver) {
             vaadinSession.access((Command) () -> mainLayout.switchToVideoView());
+        } else if (command.equals(Tag.RESET)) {
+            vaadinSession.access((Command) () -> mainLayout.switchToGuessingGame());
         }
     }
 }

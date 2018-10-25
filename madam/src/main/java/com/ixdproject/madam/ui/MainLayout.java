@@ -30,7 +30,16 @@ public class MainLayout extends Div
         arduinoReader = new ArduinoReader(guessingGame);
         guessingGame.showGuessingGame(this);
 
-        arduinoReader.start();
+        //arduinoReader.start();
+    }
+
+    public void switchToGuessingGame() {
+        this.removeAll();
+        addClassName("max-width");
+
+        GuessingGame guessingGame = new GuessingGame();
+        arduinoReader.changeView(guessingGame);
+        guessingGame.showGuessingGame(this);
     }
 
     public void switchToVideoView() {

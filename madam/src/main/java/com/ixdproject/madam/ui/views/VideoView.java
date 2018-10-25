@@ -1,9 +1,9 @@
 package com.ixdproject.madam.ui.views;
 
+import com.ixdproject.madam.backend.Tag;
 import com.ixdproject.madam.ui.MainLayout;
 import com.ixdproject.madam.ui.MainLayoutI;
 import com.vaadin.flow.component.Html;
-import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.html.Div;
@@ -23,9 +23,11 @@ public class VideoView extends VerticalLayout implements MuffinView {
 
     private VaadinSession vaadinSession;
     private Timer timer = new Timer();
+    private MainLayoutI mainLayout;
 
     public void showVideoView(MainLayoutI mainLayout) {
         vaadinSession = mainLayout.getVaadinSession();
+        this.mainLayout = mainLayout;
 
         vaadinSession.access((Command) () -> timer.schedule(new TimerTask() {
             @Override
@@ -50,11 +52,13 @@ public class VideoView extends VerticalLayout implements MuffinView {
                 mainLayout.switchToTuningGame();
                 vaadinSession.unlock();
             }
-        }, 3/*75*/ * 1000));
+        }, 75 * 1000));
     }
 
     @Override
     public void handleInput(String command) {
-
+        if (command.equals(Tag.RESET)) {
+            vaadinSession.access((Command) () -> mainLayout.switchToGuessingGame());
+        }
     }
 }
