@@ -77,11 +77,11 @@ public class ImageManager {
         guessingGameImages.add("frontend/img/guessing_game/muffin3.png");
         guessingGameImages.add("frontend/img/guessing_game/muffin4.png");
         guessingGameImages.add("frontend/img/guessing_game/muffin5.png");
-        guessingGameImages.add("frontend/img/guessing_game/chi1.jpg");
-        guessingGameImages.add("frontend/img/guessing_game/chi2.jpg");
-        guessingGameImages.add("frontend/img/guessing_game/chi3.jpg");
-        guessingGameImages.add("frontend/img/guessing_game/chi4.jpg");
-        guessingGameImages.add("frontend/img/guessing_game/chi5.jpg");
+        guessingGameImages.add("frontend/img/guessing_game/chi1.png");
+        guessingGameImages.add("frontend/img/guessing_game/chi2.png");
+        guessingGameImages.add("frontend/img/guessing_game/chi3.png");
+        guessingGameImages.add("frontend/img/guessing_game/chi4.png");
+        guessingGameImages.add("frontend/img/guessing_game/chi5.png");
     }
 
     public String getRandomImage() {
@@ -95,15 +95,15 @@ public class ImageManager {
     private Image getImage(Img img) {
         switch (img) {
             case CHIHUAHUA1:
-                return new Image("frontend/img/guessing_game/chi1.jpg", "");
+                return new Image("frontend/img/guessing_game/chi1.png", "");
             case CHIHUAHUA2:
-                return new Image("frontend/img/guessing_game/chi2.jpg", "");
+                return new Image("frontend/img/guessing_game/chi2.png", "");
             case CHIHUAHUA3:
-                return new Image("frontend/img/guessing_game/chi3.jpg", "");
+                return new Image("frontend/img/guessing_game/chi3.png", "");
             case CHIHUAHUA4:
-                return new Image("frontend/img/guessing_game/chi4.jpg", "");
+                return new Image("frontend/img/guessing_game/chi4.png", "");
             case CHIHUAHUA5:
-                return new Image("frontend/img/guessing_game/chi5.jpg", "");
+                return new Image("frontend/img/guessing_game/chi5.png", "");
             case MUFFIN1:
                 return new Image("frontend/img/guessing_game/muffin1.png", "");
             case MUFFIN2:
@@ -135,15 +135,15 @@ public class ImageManager {
 
     public Img getImg(String imageSrc) {
         switch (imageSrc) {
-            case "frontend/img/guessing_game/chi1.jpg":
+            case "frontend/img/guessing_game/chi1.png":
                 return Img.CHIHUAHUA1;
-            case "frontend/img/guessing_game/chi2.jpg":
+            case "frontend/img/guessing_game/chi2.png":
                 return Img.CHIHUAHUA2;
-            case "frontend/img/guessing_game/chi3.jpg":
+            case "frontend/img/guessing_game/chi3.png":
                 return Img.CHIHUAHUA3;
-            case "frontend/img/guessing_game/chi4.jpg":
+            case "frontend/img/guessing_game/chi4.png":
                 return Img.CHIHUAHUA4;
-            case "frontend/img/guessing_game/chi5.jpg":
+            case "frontend/img/guessing_game/chi5.png":
                 return Img.CHIHUAHUA5;
             case "frontend/img/guessing_game/muffin1.png":
                 return Img.MUFFIN1;
@@ -182,11 +182,11 @@ public class ImageManager {
     }
 
     private String getCurrentGuessingGameImgTag() {
-        if (currentGuessingGameImage.equals("frontend/img/guessing_game/chi1.jpg")
-                || currentGuessingGameImage.equals("frontend/img/guessing_game/chi2.jpg")
-                || currentGuessingGameImage.equals("frontend/img/guessing_game/chi3.jpg")
-                || currentGuessingGameImage.equals("frontend/img/guessing_game/chi4.jpg")
-                || currentGuessingGameImage.equals("frontend/img/guessing_game/chi5.jpg")) {
+        if (currentGuessingGameImage.equals("frontend/img/guessing_game/chi1.png")
+                || currentGuessingGameImage.equals("frontend/img/guessing_game/chi2.png")
+                || currentGuessingGameImage.equals("frontend/img/guessing_game/chi3.png")
+                || currentGuessingGameImage.equals("frontend/img/guessing_game/chi4.png")
+                || currentGuessingGameImage.equals("frontend/img/guessing_game/chi5.png")) {
             return Tag.CHIHUAHUA;
         } else {
             return Tag.MUFFIN;

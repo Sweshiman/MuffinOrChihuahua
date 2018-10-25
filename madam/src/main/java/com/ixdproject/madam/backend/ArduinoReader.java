@@ -21,7 +21,7 @@ public class ArduinoReader extends Thread {
     }
 
     public void write(byte[] msg) {
-        //comPort.writeBytes(msg, 1);
+        comPort.writeBytes(msg, 1);
     }
 
     public void run() {
