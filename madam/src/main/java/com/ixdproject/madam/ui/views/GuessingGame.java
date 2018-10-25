@@ -72,6 +72,7 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
                 fadeImage();
             }
         });
+        muffinButton.addClassName("invisible");
 
         chihuahuaButton = new Button("Chihuahua", event -> {
             imageManager.isCorrectGuessingGameGuess(Tag.CHIHUAHUA);
@@ -82,6 +83,7 @@ public class GuessingGame extends VerticalLayout implements MuffinView {
                 fadeImage();
             }
         });
+        chihuahuaButton.addClassName("invisible");
 
         Div buttonDiv = new Div(muffinButton, chihuahuaButton);
         buttonDiv.addClassName("invisible");
