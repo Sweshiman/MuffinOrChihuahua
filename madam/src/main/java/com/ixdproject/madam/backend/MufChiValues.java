@@ -15,12 +15,12 @@ public class MufChiValues {
     public boolean isDog(MufChiValues correctValues) {
         // 0 - 870 ish
         // was 0 - 1024
-        int dogginess = ((this.fluffinessValue / 64) - 8) * correctValues.fluffinessValue
-                * ((this.roundnessValue / 64 ) - 8) * correctValues.roundnessValue
-                * ((this.colorValue / 64) - 8) * correctValues.colorValue;
-        System.out.println("FluffinessWeight: " + ((this.fluffinessValue / 64) - 8) +
-                            "RoundnessWeight: " + ((this.roundnessValue / 64 ) - 8) +
-                            "ColorWeight: " + ((this.colorValue / 64) - 8));
+        int dogginess = ((this.fluffinessValue / 55) - 8) * correctValues.fluffinessValue
+                * ((this.roundnessValue / 55 ) - 8) * correctValues.roundnessValue
+                * ((this.colorValue / 55) - 8) * correctValues.colorValue;
+        System.out.println("FluffinessWeight: " + ((this.fluffinessValue / 55) - 8) +
+                            "RoundnessWeight: " + ((this.roundnessValue / 55 ) - 8) +
+                            "ColorWeight: " + ((this.colorValue / 55) - 8));
         System.out.println(dogginess);
         return dogginess >= 3000;
     }
